@@ -1,0 +1,265 @@
+---
+sidebar: sidebar 
+permalink: reference-storage-limits.html 
+keywords: limits, maximum, storage, aggregates, disks, volumes, capacity, luns, size, storage virtual machine, SVM 
+summary: Cloud Volumes ONTAP présente des limites de configuration du stockage pour assurer des opérations fiables. Pour des performances optimales, ne configurez pas votre système aux valeurs maximales. 
+---
+= Limites de stockage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP présente des limites de configuration du stockage pour assurer des opérations fiables. Pour des performances optimales, ne configurez pas votre système aux valeurs maximales.
+
+
+
+== Capacité système maximale par licence
+
+La capacité système maximale d'un système Cloud Volumes ONTAP est déterminée par sa licence. La capacité système maximale inclut le stockage sur disque et le stockage objet utilisé pour le Tiering des données. NetApp ne prend pas en charge le dépassement de cette limite.
+
+Dans Azure, les limites de disque vous empêchent d'atteindre la limite de capacité de 368 Tio en utilisant uniquement des disques. Dans ce cas, vous pouvez atteindre la limite de capacité de 368 Tio de https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html["tiering des données inactives vers le stockage objet"^]. Reportez-vous à la section  and disk limits by Azure VM size,Limites de capacité et de disque selon la taille des machines virtuelles Azure pour en savoir plus.
+
+[cols="30,70"]
+|===
+| Licence | Capacité système maximale (disques + stockage objet) 
+
+
+| Découvrir | 2 Tio (le Tiering des données n'est pas pris en charge sur Explore) 
+
+
+| Standard | 10 To 
+
+
+| Premium | 368 To 
+
+
+| BYOL | 368 Tio par licence 
+|===
+La limite de capacité s'adresse à l'ensemble de la paire haute disponibilité. Il n'est pas par nœud. Par exemple, si vous utilisez la licence Premium, vous pouvez disposer d'une capacité pouvant atteindre 368 Tio entre les deux nœuds.
+
+Non, ce n'est pas le cas. Les données d'une paire HA AWS sont mises en miroir de manière synchrone entre les nœuds, de sorte que les données soient disponibles en cas de panne. Par exemple, si vous achetez un disque de 8 To sur le nœud A, Cloud Manager alloue également un disque de 8 To sur le nœud B utilisé pour les données en miroir. Tandis que la capacité de 16 Tio a été provisionnée, seuls 8 Tio compte par rapport à la limite de licence.
+
+
+
+== Restrictions d'agrégats et de disques pour Cloud Volumes ONTAP dans AWS
+
+Dans Cloud Volumes ONTAP 9.4, tous les types d'instances EC2 peuvent atteindre la limite de capacité de 368 Tio avec le stockage EBS uniquement, ou utiliser le stockage EBS et le Tiering sur S3 (à la fois un nœud et une haute disponibilité).
+
+[cols="3*"]
+|===
+| Stockage physique | Paramètre | Limite 
+
+
+.5+| *Agrégats et disques* | Nombre maximal d'agrégats | 34 pour les configurations à un seul nœud 18 par nœud dans une configuration haute disponibilité ^1^ 
+
+
+| Taille maximale des agrégats | 96 Tio de capacité brute ^2^ 
+
+
+| Disques par agrégat | 1-6 ^3^ 
+
+
+| Taille maximale des disques | 16 To 
+
+
+| Nombre maximal de disques de données sur tous les agrégats ^4^ | 34 pour les configurations à un seul nœud 31 par nœud dans une configuration haute disponibilité 
+
+
+| *Groupes RAID* | Maximum par agrégat | 1 
+|===
+Remarques :
+
+. Il n'est pas possible de créer 18 agrégats sur les deux nœuds d'une paire haute disponibilité, car cela dépasserait la limite sur le disque de données.
+. La limite de capacité de l'agrégat dépend des disques qui composent l'agrégat. La limite n'inclut pas le stockage objet utilisé pour le Tiering des données.
+. Tous les disques qui composent un agrégat doivent être de la même taille.
+. La limite du disque de données est spécifique aux disques qui contiennent des données utilisateur. Le disque d'amorçage et le disque racine de chaque nœud ne sont pas inclus dans cette limite.
+
+
+
+
+== Restrictions d'agrégat et de disque pour Cloud Volumes ONTAP dans Azure
+
+[cols="3*"]
+|===
+| Stockage physique | Paramètre | Limite 
+
+
+.5+| *Agrégats et disques* | Nombre maximal d'agrégats | Identique à la limite du disque 
+
+
+| Taille maximale des agrégats | 200 Tio de capacité brute ^1^ 
+
+
+| Disques par agrégat | 1-12 ^2^ 
+
+
+| Taille maximale des disques | 32 To 
+
+
+| Nombre maximal de disques de données sur tous les agrégats ^3^ | Dépend de la taille des machines virtuelles.  and disk limits by Azure VM size,Voir ci-dessous. 
+
+
+| *Groupes RAID* | Maximum par agrégat | 1 
+|===
+Remarques :
+
+. La limite de capacité de l'agrégat dépend des disques qui composent l'agrégat. La limite n'inclut pas le stockage objet utilisé pour le Tiering des données.
+. Tous les disques qui composent un agrégat doivent être de la même taille.
+. La limite du disque de données est spécifique aux disques qui contiennent des données utilisateur. Le disque d'amorçage et le disque racine de chaque nœud ne sont pas inclus dans cette limite.
+
+
+
+
+=== Limites de capacité et de disque selon la taille des machines virtuelles Azure
+
+Dans Azure, les systèmes à un seul nœud peuvent utiliser des disques gérés HDD standard, des disques gérés SSD standard et des disques gérés SSD Premium, avec jusqu'à 32 Tio par disque. Le nombre de disques pris en charge varie en fonction de la taille des machines virtuelles.
+
+Les tableaux ci-dessous présentent la capacité maximale du système par taille de machine virtuelle avec des disques seuls, ainsi que le Tiering des données inactives vers le stockage objet.
+
+La taille des machines virtuelles est limitée pour les licences Premium et BYOL. En effet, les limites de disque ne peuvent être atteintes avec les licences Explore ou Standard en raison des limites de capacité du système.
+
+
+
+==== Un seul nœud avec une licence Premium
+
+[cols="14,20,31,33"]
+|===
+| Taille des machines virtuelles | Nombre maximal de disques par nœud | Capacité système maximale avec des disques seuls | Capacité système maximale avec disques et Tiering des données 
+
+
+| DS3_v2 | 15 | 368 To | Hiérarchisation non prise en charge 
+
+
+| DS4_v2 | 31 | 368 To | 368 To 
+
+
+| DS5_v2 | 63 | 368 To | 368 To 
+
+
+| DS13_v2 | 31 | 368 To | 368 To 
+
+
+| DS14_v2 | 63 | 368 To | 368 To 
+|===
+
+
+==== Un seul nœud avec une ou plusieurs licences BYOL
+
+
+NOTE: Pour certains types de VM, vous aurez besoin de plusieurs licences BYOL pour atteindre la capacité maximale indiquée ci-dessous. Par exemple, vous aurez besoin de 6 licences BYOL pour atteindre 2 Pio avec DS5_v2.
+
+[cols="10,18,18,18,18,18"]
+|===
+| Taille des machines virtuelles | Nombre maximal de disques par nœud 2+| Capacité système max. Avec une licence 2+| Capacité système max. Avec plusieurs licences 
+
+
+2+|  | *Disques seuls* | *Disques + hiérarchisation des données* | *Disques seuls* | *Disques + hiérarchisation des données* 
+
+
+| DS3_v2 | 15 | 368 To | Hiérarchisation non prise en charge | 480 To | Hiérarchisation non prise en charge 
+
+
+| DS4_v2 | 31 | 368 To | 368 To | 896 To | 368 Tio x chaque licence 
+
+
+| DS5_v2 | 63 | 368 To | 368 To | 896 To | 368 Tio x chaque licence 
+
+
+| DS13_v2 | 31 | 368 To | 368 To | 896 To | 368 Tio x chaque licence 
+
+
+| DS14_v2 | 63 | 368 To | 368 To | 896 To | 368 Tio x chaque licence 
+|===
+
+
+== Limites de stockage logique
+
+[cols="22,22,56"]
+|===
+| Stockage logique | Paramètre | Limite 
+
+
+| *Machines virtuelles de stockage (SVM)* | Nombre maximal pour Cloud Volumes ONTAP (paire HA ou nœud unique) | Un SVM de service des données et un SVM de destination utilisés pour la reprise après incident. Vous pouvez activer le SVM de destination pour l'accès aux données en cas de panne sur le SVM source. ^1^ le SVM qui transmet les données couvre l'ensemble du système Cloud Volumes ONTAP (paire HA ou nœud unique). 
+
+
+.2+| *Fichiers* | Taille maximale | 16 To 
+
+
+| Maximum par volume | Selon la taille du volume, jusqu'à 2 milliards 
+
+
+| *Volumes FlexClone* | Profondeur de clone hiérarchique ^2^ | 499 
+
+
+.3+| *Volumes FlexVol* | Maximale par nœud | 500 
+
+
+| Taille minimale | 20 MO 
+
+
+| Taille maximale | AWS: Selon la taille de l'agrégat ^3^ Azure: 100 Tio 
+
+
+| *Qtrees* | Maximum par volume FlexVol | 4,995 
+
+
+| *Copies snapshot* | Maximum par volume FlexVol | 1,023 
+|===
+Remarques :
+
+. Cloud Manager ne prend pas en charge la configuration ou l'orchestration de la reprise après incident SVM. Il ne prend pas non plus en charge les tâches relatives au stockage sur une SVM supplémentaire. Vous devez utiliser System Manager ou l'interface de ligne de commande pour la reprise après incident SVM.
++
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["Guide de préparation rapide pour la reprise après incident du SVM"^]
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["Guide de reprise après incident de SVM Express"^]
+
+
+. La profondeur de clone hiérarchique correspond à la profondeur maximale d'une hiérarchie imbriquée de volumes FlexClone qui peut être créée à partir d'un seul volume FlexVol.
+. Moins de 100 Tio est pris en charge, car les agrégats pour cette configuration sont limités à 96 Tio de capacité _RAW_.
+
+
+
+
+== Limites de stockage iSCSI
+
+[cols="3*"]
+|===
+| Stockage iSCSI | Paramètre | Limite 
+
+
+.4+| *LUN* | Maximale par nœud | 1,024 
+
+
+| Nombre maximal de mappages de LUN | 1,024 
+
+
+| Taille maximale | 16 To 
+
+
+| Maximum par volume | 512 
+
+
+| *igroups* | Maximale par nœud | 256 
+
+
+.2+| *Initiateurs* | Maximale par nœud | 512 
+
+
+| Maximum par groupe initiateur | 128 
+
+
+| *Sessions iSCSI* | Maximale par nœud | 1,024 
+
+
+.2+| *Lifs* | Maximum par port | 32 
+
+
+| Maximum par ensemble de ports | 32 
+
+
+| *Porsets* | Maximale par nœud | 256 
+|===

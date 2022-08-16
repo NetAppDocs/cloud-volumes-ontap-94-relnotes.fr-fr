@@ -1,0 +1,122 @@
+---
+sidebar: sidebar 
+permalink: reference-new.html 
+keywords: 'what"s new, new, features, release notes, enhancements' 
+summary: 'Les nouvelles versions d"Cloud Volumes ONTAP incluent de nouvelles fonctionnalités, améliorations et correctifs.' 
+---
+= Nouveautés de Cloud Volumes ONTAP 9.4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 9.4 comprend un certain nombre de nouvelles fonctionnalités et améliorations.
+
+
+NOTE: D'autres fonctionnalités et améliorations sont également introduites dans les dernières versions de Cloud Manager. Voir la https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/whats-new.html["Notes de version de Cloud Manager"^] pour plus d'informations.
+
+
+
+== Prise en charge de la rémunération à la demande dans la région AWS GovCloud (US)
+
+La version payante de Cloud Volumes ONTAP est désormais prise en charge dans la région AWS GovCloud (États-Unis). Cela s'ajoute à la prise en charge de Cloud Volumes ONTAP BYOL dans la région de GovCloud (États-Unis).
+
+Vous pouvez déployer Cloud Volumes ONTAP dans la région de GovCloud (US), tout comme n'importe quelle autre région. Accédez à NetApp Cloud Central et lancez Cloud Manager à GovCloud (États-Unis). Lancez ensuite Cloud Volumes ONTAP PAYGO ou BYOL en créant un nouvel environnement de travail dans Cloud Manager.
+
+
+
+== Tiering des données inactives avec Cloud Volumes ONTAP Premium et BYOL
+
+Dans la version 9.2, le Tiering automatisé des données a été introduit entre un Tier de performance (SSD ou HDD) et un Tier de capacité (magasin d'objets). Les données inactives envoyées vers le niveau de capacité incluaient des copies Snapshot de volumes en lecture-écriture (la règle de hiérarchisation _Snapshot uniquement_) ou des données provenant de volumes de destination (la règle de hiérarchisation_sauvegarde_).
+
+Avec Cloud Volumes ONTAP 9.4 Premium et BYOL, vous disposez désormais d'une troisième option : vous pouvez utiliser la règle de hiérarchisation _automatique_ pour classer les blocs de données inactives dans un volume de lecture-écriture vers un niveau de capacité. Les données à froid comprennent non seulement des copies Snapshot, mais aussi des données utilisateur à froid provenant du système de fichiers actif.
+
+En cas de lecture aléatoire, les blocs de données à froid du niveau de capacité deviennent chauds et passent au niveau de performance. Si elles sont lues par des lectures séquentielles, telles que celles associées aux analyses d'index et d'antivirus, les blocs de données à froid restent froids et ne passent pas au niveau de performance.
+
+Vous pouvez choisir la règle de Tiering lors de la création ou de la modification d'un volume dans Cloud Manager. Pour plus de détails, reportez-vous à https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html["Documentation de Cloud Manager"].
+
+
+
+== Tiering des données dans Microsoft Azure
+
+Vous pouvez désormais réduire les coûts de stockage Azure en associant un Tier de performance pour les données actives (disques gérés Premium ou Standard) à un Tier de capacité pour les données inactives (stockage Azure Blob Storage). Les règles de Tiering qui sont prises en charge dans AWS sont également prises en charge dans Azure : auto, Snapshot uniquement et sauvegarde.
+
+
+NOTE: Le Tiering des données n'est pas pris en charge avec le type de machine virtuelle DS3_v2.
+
+Vous pouvez choisir la règle de Tiering lors de la création ou de la modification d'un volume dans Cloud Manager. Pour plus de détails, reportez-vous à https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html["Documentation de Cloud Manager"].
+
+
+
+== Tiering des données avec des SSD IOPS provisionnés
+
+Le Tiering des données est désormais pris en charge dans AWS avec des SSD IOPS provisionnés. Vous pouvez utiliser ces disques SSD comme Tier de performance pour les données actives avec Amazon S3 en tant que Tier de capacité pour les données inactives.
+
+
+
+== Meilleures performances lors du Tiering des données
+
+Les améliorations apportées aux versions 9.2 et 9.3 sont désormais prises en charge avec les volumes qui transfère les données inactives vers un Tier de capacité de magasin d'objets. Cela s'applique aux volumes créés sur les nouveaux agrégats SSD dans Cloud Volumes ONTAP 9.4.
+
+
+
+== Performances améliorées pour plusieurs charges de travail dans AWS
+
+Cloud Volumes ONTAP dispose désormais d'une bande passante réseau supplémentaire dans AWS, ce qui améliore les performances des systèmes hébergeant plusieurs charges de travail. La bande passante supplémentaire est disponible pour les types d'instances EC2 suivants lors de la mise à niveau vers la version 9.4, et lors du lancement de nouveaux systèmes 9.4 :
+
+* m4.xlarge
+* m4.2xlarge
+* m4,4xlarge
+* c4.4xlarge
+* c4.8xlarge
+
+
+
+
+== Les types d'instances EC2 ne sont plus pris en charge
+
+Toutes les versions d'Cloud Volumes ONTAP ne prennent plus en charge plusieurs types d'instances EC2. Les systèmes existants qui exécutent ces types d'instances continueront de fonctionner normalement. Cependant, NetApp recommande fortement de changer de type d'instance.
+
+Pour connaître les différences de prix entre les types d'instances et les licences NetApp, rendez-vous sur AWS Marketplace pour http://aws.amazon.com/marketplace/pp/B011KEZ734["systèmes à un seul nœud"^] et pour http://aws.amazon.com/marketplace/pp/B01H4LVJ84["Paires HA"^].
+
+[cols="2*"]
+|===
+| Type d'instance non pris en charge | Type d'instance recommandé 
+
+
+| c3.2xlarge | m4.xlarge 
+
+
+| c4.2xlarge | m4.2xlarge 
+
+
+| instance m3.xlarge | m4.xlarge 
+
+
+| m3,2xlarge | m4.2xlarge 
+
+
+| r3.xlarge | m4.2xlarge 
+
+
+| r3.2xlarge | r4.2xlarge 
+|===
+
+TIP: Les types d'instances m3 et R3 ne sont pas pris en charge avec le Tiering des données et l'amélioration des performances. Par conséquent, le passage aux types d'instances M4 et R4 vous permet de tirer parti de ces fonctionnalités Cloud Volumes ONTAP.
+
+
+
+== Notes de mise à niveau
+
+* La mise à niveau d'Cloud Volumes ONTAP doit être effectuée depuis Cloud Manager. Vous ne devez pas mettre à niveau Cloud Volumes ONTAP à l'aide de System Manager ou de l'interface de ligne de commandes. Cela peut affecter la stabilité du système.
+* Vous pouvez effectuer la mise à niveau vers Cloud Volumes ONTAP 9.4 à partir de la version 9.3.
++
+Pour comprendre les exigences de version, reportez-vous à la section http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-dot-upgrade/GUID-AC0EB781-583F-4C90-A4C4-BC7B14CEFD39.html["Documentation ONTAP 9 : configuration requise pour la mise à jour du cluster"^].
+
+* La mise à niveau d'un système à un nœud unique permet de mettre le système hors ligne pendant 25 minutes au cours desquelles les E/S sont interrompues.
+* La mise à niveau d'une paire haute disponibilité s'effectue sans interruption et les E/S sont continues. Au cours de ce processus de mise à niveau sans interruption, chaque nœud est mis à niveau en tandem afin de continuer à traiter les E/S aux clients.
+
