@@ -178,6 +178,13 @@
     <li>
       
       <a href="https://docs.netapp.com/fr-fr/cloud-volumes-ontap-relnotes/reference-storage-limits.html" target="_self">
+        <span translate="no" class="notranslate"><span>Cloud Volumes ONTAP</span><span class="version"> 9.12.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/fr-fr/cloud-volumes-ontap-9111-relnotes/reference-storage-limits.html" target="_self">
         <span translate="no" class="notranslate"><span>Cloud Volumes ONTAP</span><span class="version"> 9.11.1</span></span>
       </a>
                      
@@ -620,7 +627,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-17 07:07:24 +0000">11/17/2022</time>
+    <time datetime="2022-12-09 16:32:59 +0000">12/09/2022</time>
     
   
 
@@ -644,7 +651,7 @@
 <p>La capacité système maximale d&#8217;un système Cloud Volumes ONTAP est déterminée par sa licence. La capacité système maximale inclut le stockage sur disque et le stockage objet utilisé pour le Tiering des données. NetApp ne prend pas en charge le dépassement de cette limite.</p>
 </div>
 <div class="paragraph">
-<p>Dans Azure, les limites de disque vous empêchent d&#8217;atteindre la limite de capacité de 368 Tio en utilisant uniquement des disques. Dans ce cas, vous pouvez atteindre la limite de capacité de 368 Tio de <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html" target="_blank" rel="noopener">"tiering des données inactives vers le stockage objet"</a>. Reportez-vous à la section  and disk limits by Azure VM size,Limites de capacité et de disque selon la taille des machines virtuelles Azure pour en savoir plus.</p>
+<p>Dans Azure, les limites de disque vous empêchent d&#8217;atteindre la limite de capacité de 368 Tio en utilisant uniquement des disques. Dans ce cas, vous pouvez atteindre la limite de capacité de 368 Tio de <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html" target="_blank" rel="noopener">"tiering des données inactives vers le stockage objet"</a>. Reportez-vous à la section <a href="#limites-de-capacité-et-de-disque-selon-la-taille-des-machines-virtuelles-azure">Limites de capacité et de disque selon la taille des machines virtuelles Azure</a> pour en savoir plus.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -677,9 +684,11 @@
 </tbody>
 </table>
 <div class="paragraph">
+<div class="title">Pour la haute disponibilité, la capacité de licence est-elle limitée par nœud ou pour la paire HA entière ?</div>
 <p>La limite de capacité s&#8217;adresse à l&#8217;ensemble de la paire haute disponibilité. Il n&#8217;est pas par nœud. Par exemple, si vous utilisez la licence Premium, vous pouvez disposer d&#8217;une capacité pouvant atteindre 368 Tio entre les deux nœuds.</p>
 </div>
 <div class="paragraph">
+<div class="title">Pour un système haute disponibilité dans AWS, est-ce que les données en miroir sont prises en compte avec la limite de capacité ?</div>
 <p>Non, ce n&#8217;est pas le cas. Les données d&#8217;une paire HA AWS sont mises en miroir de manière synchrone entre les nœuds, de sorte que les données soient disponibles en cas de panne. Par exemple, si vous achetez un disque de 8 To sur le nœud A, Cloud Manager alloue également un disque de 8 To sur le nœud B utilisé pour les données en miroir. Tandis que la capacité de 16 Tio a été provisionnée, seuls 8 Tio compte par rapport à la limite de licence.</p>
 </div>
 </div>
@@ -789,7 +798,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nombre maximal de disques de données sur tous les agrégats <sup>3</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Dépend de la taille des machines virtuelles.  and disk limits by Azure VM size,Voir ci-dessous.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dépend de la taille des machines virtuelles. <a href="#limites-de-capacité-et-de-disque-selon-la-taille-des-machines-virtuelles-azure">Voir ci-dessous</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Groupes RAID</strong></p></td>
