@@ -53,10 +53,6 @@
   <block id="602b56cc8e56a5daf341c7f6b5489c76" category="list-text">Le déplacement de LUN n'est pas pris en charge sur les systèmes sur lesquels le chiffrement Cloud Volumes ONTAP est activé.</block>
   <block id="ad36e2b4d23122ce393299ac3f5e4d18" category="list-text">Cloud Volumes ONTAP envoie des clés de chiffrement aux gestionnaires de clés, même pour les agrégats qu'il n'a pas pu créer.</block>
   <block id="e6cd7708d37be14be1ec14b31818d9c9" category="paragraph">Vous devez supprimer manuellement les clés des gestionnaires de clés.</block>
-  <block id="2d03060cc88d48d8c65d3a01864614ad" category="section-title">Restrictions connues de Microsoft Azure</block>
-  <block id="d0e7588890233fc627c7bcaab1e75386" category="paragraph">Cloud Volumes ONTAP s'est limité dans Azure par les restrictions connues suivantes.</block>
-  <block id="e4f5b6f59db7bfa0e08c02262ddbd654" category="section-title">Le paiement à l'utilisation n'est pas disponible pour les partenaires de FST</block>
-  <block id="f2ff5834d93c258f0fc4ad6cf6a17942" category="paragraph">Si vous êtes un partenaire de fournisseur de solutions cloud Microsoft, vous ne pouvez pas déployer Cloud Volumes ONTAP Explore, Standard ou Premium car les abonnements avec paiement à l'utilisation ne sont pas disponibles pour les partenaires d'un FST. Vous devez acheter une licence et déployer Cloud Volumes ONTAP BYOL.</block>
   <block id="b3dfe19c7d46d1f8795ac17bf3d5a909" category="summary">Cloud Volumes ONTAP présente des limites de configuration du stockage pour assurer des opérations fiables. Pour des performances optimales, ne configurez pas votre système aux valeurs maximales.</block>
   <block id="150a34e7bbdf7765066eae5fadb9f919" category="doc">Limites de stockage</block>
   <block id="ecedb9353641e4bd058af0268a6edce8" category="section-title">Capacité système maximale par licence</block>
@@ -290,4 +286,6 @@
   <block id="7ff191df90fac0fa94ab5c2b5101a5e9" category="sidebar">Toute la documentation de Cloud Manager</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="sidebar">Cloud Volumes ONTAP</block>
   <block id="dea335c9c6f638eb584011e253ad6ca1" category="sidebar">Cloud ONTAP</block>
+  <block id="2f9882645b2c32820ad085240bacb763" category="paragraph-title">Pour la haute disponibilité, la capacité de licence est-elle limitée par nœud ou pour la paire HA entière ?</block>
+  <block id="fc9a388cd18c69244f22554de6f0d544" category="paragraph-title">Pour un système haute disponibilité dans AWS, est-ce que les données en miroir sont prises en compte avec la limite de capacité ?</block>
 </blocks>

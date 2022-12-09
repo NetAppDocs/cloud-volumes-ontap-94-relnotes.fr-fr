@@ -126,15 +126,3 @@ La déconnexion d'un volume EBS d'une instance Cloud Volumes ONTAP, puis sa conn
 Vous devez supprimer manuellement les clés des gestionnaires de clés.
 
 
-
-
-
-== Restrictions connues de Microsoft Azure
-
-Cloud Volumes ONTAP s'est limité dans Azure par les restrictions connues suivantes.
-
-
-
-=== Le paiement à l'utilisation n'est pas disponible pour les partenaires de FST
-
-Si vous êtes un partenaire de fournisseur de solutions cloud Microsoft, vous ne pouvez pas déployer Cloud Volumes ONTAP Explore, Standard ou Premium car les abonnements avec paiement à l'utilisation ne sont pas disponibles pour les partenaires d'un FST. Vous devez acheter une licence et déployer Cloud Volumes ONTAP BYOL.
