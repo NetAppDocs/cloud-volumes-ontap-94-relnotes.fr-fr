@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
   <block id="7d9b2b78909e33445be41b4ae9f344ee" category="summary">Ces notes de version décrivent les nouvelles fonctionnalités, les limites et les problèmes connus de Cloud Volumes ONTAP 9.4.</block>
-  <block id="a7c547126254140f4fce2f237d58af44" category="doc">Notes de version de Cloud Volumes ONTAP 9.4</block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">Les limitations connues identifient les plateformes, les périphériques ou les fonctions qui ne sont pas pris en charge par cette version du produit, ou qui ne fonctionnent pas correctement avec elle. Examinez attentivement ces limites.</block>
   <block id="482723983a4f2af954e36ff41e567451" category="doc">Limites connues</block>
   <block id="1ac484b7039a7a63fa107c6b607c9db1" category="section-title">Limitations générales</block>
@@ -267,7 +266,6 @@
   <block id="b74e417dfcf9c510c8ee51112a6b120e" category="list-text"><block ref="b74e417dfcf9c510c8ee51112a6b120e" category="inline-link-rx"></block></block>
   <block id="e49c3c01b15761b5f011d0bd2a0661a3" category="inline-link">Notification relative à ONTAP 9.4</block>
   <block id="d9195238a86c588c2dd56ced20b5060d" category="list-text"><block ref="d9195238a86c588c2dd56ced20b5060d" category="inline-link-rx"></block></block>
-  <block id="da38098873cb3db962a9491ab33ff93d" category="sidebar">Accueil des notes de mise à jour</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">Quoi de neuf</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Commencez</block>
   <block id="e19968c5ebc4b94a271992f4b0563be8" category="sidebar">Configurations et limites</block>
@@ -276,14 +274,11 @@
   <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">Communauté NetApp</block>
   <block id="ff6c37cbc252e306a6b4e390ec13cbc1" category="sidebar">Blog Cloud Central</block>
   <block id="ad203e818e0c9d7f42f1c260b33875f3" category="sidebar">Webinaires sur le cloud</block>
-  <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="sidebar">Cloud Volumes ONTAP</block>
-  <block id="dea335c9c6f638eb584011e253ad6ca1" category="sidebar">Cloud ONTAP</block>
   <block id="2f9882645b2c32820ad085240bacb763" category="paragraph-title">Pour la haute disponibilité, la capacité de licence est-elle limitée par nœud ou pour la paire HA entière ?</block>
   <block id="fc9a388cd18c69244f22554de6f0d544" category="paragraph-title">Pour un système haute disponibilité dans AWS, est-ce que les données en miroir sont prises en compte avec la limite de capacité ?</block>
   <block id="46db5b29a56ccaf5d1f79e4bbe4aae89" category="paragraph">Dans Azure, les limites de disque vous empêchent d'atteindre la limite de capacité de 368 Tio en utilisant uniquement des disques. Dans ce cas, vous pouvez atteindre la limite de capacité de 368 Tio de<block ref="aea0958203307daa433f894622f3e640" category="inline-link-rx"></block>. Reportez-vous à la section <block ref="3e9c678258f956964e9e70e5427a6e55" category="inline-xref-macro-rx"></block> pour en savoir plus.</block>
   <block id="6d43452380cd21cb4417b9a1824c3ac4" category="admonition">D'autres fonctionnalités et améliorations sont également introduites dans les dernières versions de Cloud Manager. Voir la<block ref="ae983c0a7ee8a786f01e9cc8530d422b" category="inline-link-rx"></block> pour plus d'informations.</block>
   <block id="952b4eed8b943005d4741823b952e0f8" category="paragraph">Vous pouvez choisir la règle de Tiering lors de la création ou de la modification d'un volume dans Cloud Manager. Pour plus de détails, reportez-vous à<block ref="21af1e2086b593ece92c4b9786979343" category="inline-link-rx"></block>.</block>
-  <block id="7a45e6298bb69116e2c6db653fb88884" category="sidebar">Toute la documentation BlueXP</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
@@ -292,4 +287,5 @@
   <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="a61a85744fee28d1b209cdce2108ab2b" category="sidebar">Notes de version de Cloud Volumes ONTAP 9.4</block>
 </blocks>
