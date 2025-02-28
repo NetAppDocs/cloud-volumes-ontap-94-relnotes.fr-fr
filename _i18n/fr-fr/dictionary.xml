@@ -199,14 +199,12 @@
   <block id="9de28fbf6817cd511eb799f9575b611d" category="list-text">Lorsque vous choisissez un type d'instance EC2, vous pouvez indiquer s'il s'agit d'une instance partagée ou dédiée.</block>
   <block id="9904b0ede3a9bd5892bd94e6884380ae" category="list-text">Les performances d'écriture améliorées sont prises en charge lorsque les SSD EBS sont utilisés avec Cloud Volumes ONTAP Standard, Premium et BYOL.</block>
   <block id="a3f8304ab1695053d71855c60f8abf63" category="inline-link">Régions Cloud volumes Global</block>
-  <block id="4375839c669e051e5f2a8de11ba0c5d0" category="list-text">Pour la prise en charge de chaque région AWS, consultez la section<block ref="2b6a522631c3b3b8afac5466195e108a" category="inline-link-rx"></block>.</block>
   <block id="2544021bbaa4bc6eadfddbb17edf7811" category="section-title">Cloud Volumes ONTAP pour Azure</block>
   <block id="0880fd0b2e173edf438b6f7e4d92af32" category="paragraph">Dans Azure, vous pouvez déployer Cloud Volumes ONTAP en tant que système à un seul nœud.</block>
   <block id="5fbb3d7412f89cff55389171f83d7684" category="cell">Types de machines virtuelles</block>
   <block id="50bb513ae39b44421d182e4072a83998" category="cell">Disques gérés HDD standard, disques gérés SSD standard et disques gérés SSD premium, jusqu'à 32 To par disque</block>
   <block id="d448e5e37b82dc9cd3ec041340cd7253" category="list-text">Le Tiering des données n'est pas pris en charge avec le type de machine virtuelle DS3_v2.</block>
   <block id="d6b23a41a85f490ae75b43cb4095d8c0" category="list-text">Les performances améliorées en écriture sont activées lorsque vous utilisez des disques de stockage Azure Premium, mais pas avec le type de machine virtuelle DS3_v2.</block>
-  <block id="7c7627c6477255acb2239bd1be90f346" category="list-text">Pour la prise en charge par région Azure, consultez la section<block ref="2b6a522631c3b3b8afac5466195e108a" category="inline-link-rx"></block>.</block>
   <block id="4cab73a24f20e30e14e8ec52694aef82" category="summary">Les nouvelles versions d'Cloud Volumes ONTAP incluent de nouvelles fonctionnalités, améliorations et correctifs.</block>
   <block id="51725349a7337e60469d7cccc2aa4017" category="doc">Nouveautés de Cloud Volumes ONTAP 9.4</block>
   <block id="bc6fd8b4572c0d9cd26584917775df84" category="paragraph">Cloud Volumes ONTAP 9.4 comprend un certain nombre de nouvelles fonctionnalités et améliorations.</block>
@@ -288,4 +286,6 @@
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="a61a85744fee28d1b209cdce2108ab2b" category="sidebar">Notes de version de Cloud Volumes ONTAP 9.4</block>
+  <block id="0890aa708cef7529c2bd35cb7d2895df" category="list-text">Pour la prise en charge des régions AWS, voir<block ref="e55b14db85f4d4837890e415926626e0" category="inline-link-rx"></block>.</block>
+  <block id="f0de068c81c765820aca0fa8fe017396" category="list-text">Pour la prise en charge des régions Azure, voir<block ref="e55b14db85f4d4837890e415926626e0" category="inline-link-rx"></block>.</block>
 </blocks>
